@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">lbc_albums</string>
+    <string name="album_content_cell_thumbnail_description">Thumbnail of the album</string>
+    <string name="cover_of_the_album">Cover of the album</string>
+
+    <string name="album_content_activity_title">Album collection id n° %1$d</string>
+    <string name="album_detail_activity_title">Album id n°%1$d</string>
 </resources>
