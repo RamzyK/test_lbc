@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/layout/album_content_activity.xml" value="0.3591485507246377" />
+        <entry key="app/src/main/res/layout/album_content_list_cell.xml" value="0.3591485507246377" />
+        <entry key="app/src/main/res/layout/album_detail_activity.xml" value="0.2864583333333333" />
+        <entry key="app/src/main/res/layout/album_list_activity.xml" value="0.1921875" />
+        <entry key="app/src/main/res/layout/album_list_cell.xml" value="0.3591485507246377" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
