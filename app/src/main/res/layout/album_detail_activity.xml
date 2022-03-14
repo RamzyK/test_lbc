@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".view.album_detail.AlbumDetailActivity">
+    tools:context=".ui.activities.album_detail.AlbumDetailActivity">
 
     <ImageView
         android:id="@+id/album_detail_cover_iv"

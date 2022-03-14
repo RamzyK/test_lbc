@@ -1,4 +1,4 @@
-package com.example.lbc_albums.view.home
+package com.example.lbc_albums.ui.activities.home
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,12 +8,13 @@ import com.example.lbc_albums.databinding.AlbumListActivityBinding
 import com.example.lbc_albums.helpers.DevRule.ALBUM_CONTENT_POSITION_KEY
 import com.example.lbc_albums.helpers.DevRule.ALBUM_GRID_COLONES
 import com.example.lbc_albums.helpers.RecyclerViewClickListener
-import com.example.lbc_albums.view.album_content.AlbumContentActivity
-import com.example.lbc_albums.viewmodel.AlbumViewModel
+import com.example.lbc_albums.ui.activities.album_content.AlbumContentActivity
+import com.example.lbc_albums.ui.viewmodel.AlbumViewModel
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import kotlinx.coroutines.DelicateCoroutinesApi
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
+@DelicateCoroutinesApi
 class AlbumListActivity : AppCompatActivity(), RecyclerViewClickListener {
     /**
      * ViewModel that handles the logic of the app
@@ -67,11 +68,11 @@ class AlbumListActivity : AppCompatActivity(), RecyclerViewClickListener {
      * RecyclerView
      */
     private fun observeAlbumData() {
-        albumViewModel.albumsLiveData.observe(this){
+        this.albumViewModel.albumsLiveData.observe(this){
             this.albumAdapter.submitList(it)
         }
 
-        albumViewModel.stillLoading.subscribe { finished ->
+        this.albumViewModel.stillLoading.subscribe { finished ->
             this.binding.swipeRefreshLayout.isRefreshing = finished
         }.let(disposeBag::add)
 

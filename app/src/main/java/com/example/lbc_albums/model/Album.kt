@@ -1,4 +1,4 @@
-package com.example.lbc_albums.repository.dao
+package com.example.lbc_albums.model
 
 data class Albums(
     val id: Int,

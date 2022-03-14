@@ -1,12 +1,10 @@
-package com.example.lbc_albums.di
+package com.example.lbc_albums.di.modules
 
 import com.example.lbc_albums.helpers.DevRule.API_BASE_URL
 import com.example.lbc_albums.helpers.DevRule.CONNECTION_TIMEOUT_VALUE
 import com.example.lbc_albums.helpers.DevRule.READ_TIMEOUT_VALUE
 import com.example.lbc_albums.helpers.DevRule.WRITE_TIMEOUT_VALUE
-import com.example.lbc_albums.repository.AlbumService
 import okhttp3.OkHttpClient
-import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

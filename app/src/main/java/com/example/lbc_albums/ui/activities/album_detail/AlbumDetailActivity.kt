@@ -1,4 +1,4 @@
-package com.example.lbc_albums.view.album_detail
+package com.example.lbc_albums.ui.activities.album_detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

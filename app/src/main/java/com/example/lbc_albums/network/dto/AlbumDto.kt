@@ -1,4 +1,4 @@
-package com.example.lbc_albums.repository.dto
+package com.example.lbc_albums.network.dto
 
 import com.google.gson.annotations.SerializedName
 

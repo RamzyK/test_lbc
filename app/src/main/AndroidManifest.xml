@@ -13,13 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Lbc_albums">
         <activity
-            android:name=".view.album_detail.AlbumDetailActivity"
+            android:name=".ui.activities.album_detail.AlbumDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".view.album_content.AlbumContentActivity"
+            android:name=".ui.activities.album_content.AlbumContentActivity"
             android:exported="false" />
         <activity
-            android:name=".view.home.AlbumListActivity"
+            android:name=".ui.activities.home.AlbumListActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

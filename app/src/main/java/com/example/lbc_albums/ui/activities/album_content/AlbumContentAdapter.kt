@@ -1,10 +1,8 @@
-package com.example.lbc_albums.view.album_content
+package com.example.lbc_albums.ui.activities.album_content
 
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AlphaAnimation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -16,7 +14,7 @@ import com.example.lbc_albums.databinding.AlbumContentListCellBinding
 import com.example.lbc_albums.helpers.BaseAdapter
 import com.example.lbc_albums.helpers.RecyclerViewClickListener
 import com.example.lbc_albums.helpers.setFadeAnimation
-import com.example.lbc_albums.repository.dao.Album
+import com.example.lbc_albums.model.Album
 
 
 /**

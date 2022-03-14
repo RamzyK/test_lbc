@@ -1,4 +1,4 @@
-package com.example.lbc_albums.view.album_content
+package com.example.lbc_albums.ui.activities.album_content
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -11,11 +11,13 @@ import com.example.lbc_albums.helpers.DevRule.ALBUM_COVER_URL_KEY
 import com.example.lbc_albums.helpers.DevRule.ALBUM_ID_KEY
 import com.example.lbc_albums.helpers.DevRule.ALBUM_TITLE_KEY
 import com.example.lbc_albums.helpers.RecyclerViewClickListener
-import com.example.lbc_albums.repository.dao.Albums
-import com.example.lbc_albums.view.album_detail.AlbumDetailActivity
-import com.example.lbc_albums.viewmodel.AlbumViewModel
+import com.example.lbc_albums.model.Albums
+import com.example.lbc_albums.ui.activities.album_detail.AlbumDetailActivity
+import com.example.lbc_albums.ui.viewmodel.AlbumViewModel
+import kotlinx.coroutines.DelicateCoroutinesApi
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+@DelicateCoroutinesApi
 class AlbumContentActivity : AppCompatActivity(), RecyclerViewClickListener {
     private val  albumViewModel: AlbumViewModel by viewModel()
     /**
@@ -65,7 +67,7 @@ class AlbumContentActivity : AppCompatActivity(), RecyclerViewClickListener {
     }
 
     override fun onClickListener(position: Int) {
-        val albumContent = albumContentList.albumContent.get(position)
+        val albumContent = albumContentList.albumContent[position]
         Intent(
             this,
             AlbumDetailActivity::class.java

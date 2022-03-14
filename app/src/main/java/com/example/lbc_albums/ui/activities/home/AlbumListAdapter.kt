@@ -1,4 +1,4 @@
-package com.example.lbc_albums.view.home
+package com.example.lbc_albums.ui.activities.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +7,7 @@ import com.example.lbc_albums.databinding.AlbumListCellBinding
 import com.example.lbc_albums.helpers.BaseAdapter
 import com.example.lbc_albums.helpers.RecyclerViewClickListener
 import com.example.lbc_albums.helpers.setFadeAnimation
-import com.example.lbc_albums.repository.dao.Albums
+import com.example.lbc_albums.model.Albums
 
 
 /**

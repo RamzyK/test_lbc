@@ -1,6 +1,6 @@
-package com.example.lbc_albums.repository
+package com.example.lbc_albums.network
 
-import com.example.lbc_albums.repository.dto.AlbumDto
+import com.example.lbc_albums.network.dto.AlbumDto
 import retrofit2.Call
 import retrofit2.http.GET
 

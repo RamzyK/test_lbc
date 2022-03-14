@@ -1,19 +1,20 @@
-package com.example.lbc_albums.repository.mappers
+package com.example.lbc_albums.network.mappers
 
-import com.example.lbc_albums.repository.dao.Album
-import com.example.lbc_albums.repository.dao.AlbumInfo
-import com.example.lbc_albums.repository.dao.Albums
-import com.example.lbc_albums.repository.dto.AlbumDto
+import com.example.lbc_albums.db.entities.AlbumEntity
+import com.example.lbc_albums.model.Album
+import com.example.lbc_albums.model.AlbumInfo
+import com.example.lbc_albums.model.Albums
+import com.example.lbc_albums.network.dto.AlbumDto
 
 class AlbumsMapper : Mapper<List<AlbumDto>, List<Albums>> {
 
     /**
-     * Function to map the JSON data to a much more usable format
+     * Function to map the JSON data to a list of Albums model
      *
      * @param input: List of all the DTO get from the api call from the repository
      * @return List of Albums objects which compile albums with the same albumId
      */
-    override fun map(input: List<AlbumDto>): List<Albums> = with(input) {
+    override fun mapDtoToModel(input: List<AlbumDto>): List<Albums> = with(input) {
         val albums: MutableList<Albums> = mutableListOf()
         var albumContentList: MutableList<Album> = mutableListOf()
         var albumId = this.first().albumId
@@ -44,11 +45,31 @@ class AlbumsMapper : Mapper<List<AlbumDto>, List<Albums>> {
         }
         albums
     }
+
+    /**
+     * Map data from db to a list of Albums model
+     *
+     * @param input: List of Album entities saved in db
+     * @return List of Albums model objects
+     */
+    override fun mapDaoToModel(input: List<AlbumEntity>): List<Albums> {
+        val inputMappedToDtos = input.map {
+            AlbumDto(
+               it.albumId,
+               it.id,
+               it.title,
+               it.url,
+               it.thumbnailUrl
+            )
+        }
+        return mapDtoToModel(inputMappedToDtos)
+    }
 }
 
 /**
- * Interface to help the mapping between DTOs and app objects
+ * Interface to help the mapping objects
  */
 interface Mapper<in I, out O> {
-    fun map(input: I): O
+    fun mapDtoToModel(input: I): O
+    fun mapDaoToModel(input: List<AlbumEntity>): O
 }
