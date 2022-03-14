@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/album_detail_cover_iv"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="@dimen/album_detail_cover_width"
+        android:layout_height="@dimen/album_detail_cover_height"
         android:layout_gravity="center"
         tools:src="@drawable/ic_launcher_background"
         android:contentDescription="@string/cover_of_the_album" />
@@ -19,13 +19,13 @@
         android:id="@+id/album_title_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:textSize="@dimen/album_detail_title_text_size"
+        android:layout_marginTop="@dimen/album_detail_title_top_margin"
+        android:layout_marginStart="@dimen/album_detail_title_start_margin"
+        android:layout_marginEnd="@dimen/album_detail_title_end_margin"
         android:textAlignment="center"
         android:textStyle="bold"
         android:layout_gravity="center"
-        tools:text="et dolores cum et explicabo non dolor voluptas"/>
+        tools:text="@string/album_detail_tools_text"/>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

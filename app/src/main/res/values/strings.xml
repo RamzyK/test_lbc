@@ -5,4 +5,7 @@
 
     <string name="album_content_activity_title">Album collection id n° %1$d</string>
     <string name="album_detail_activity_title">Album id n°%1$d</string>
+    <string name="album_detail_tools_text">et dolores cum et explicabo non dolor voluptas</string>
+    <string name="album_content_tools_title">reprehenderit est deserunt velit ipsam</string>
+    <string name="album_list_cell_album_position_tv_tools_text">1</string>
 </resources>

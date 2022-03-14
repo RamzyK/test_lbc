@@ -2,14 +2,14 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="120dp"
-    android:layout_height="120dp"
-    app:cardElevation="5dp"
-    app:cardCornerRadius="12dp"
-    android:layout_marginEnd="8dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginTop="8dp"
-    android:layout_marginBottom="8dp"
+    android:layout_width="@dimen/album_list_cell_width"
+    android:layout_height="@dimen/album_list_cell_height"
+    app:cardElevation="@dimen/album_list_cell_card_elevation"
+    app:cardCornerRadius="@dimen/album_list_cell_card_corner_radius"
+    android:layout_marginEnd="@dimen/album_list_cell_end_margin"
+    android:layout_marginStart="@dimen/album_list_cell_start_margin"
+    android:layout_marginTop="@dimen/album_list_cell_top_margin"
+    android:layout_marginBottom="@dimen/album_list_cell_bottom_margin"
     android:layout_gravity="center">
 
     <TextView
@@ -17,8 +17,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textSize="30sp"
-        tools:text="1"/>
+        android:textSize="@dimen/album_list_cell_position_tv_text_size"
+        tools:text="@string/album_list_cell_album_position_tv_tools_text"/>
 
 
 </androidx.cardview.widget.CardView>

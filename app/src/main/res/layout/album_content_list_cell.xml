@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardElevation="5dp"
-    app:cardCornerRadius="12dp"
-    android:layout_marginEnd="8dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginTop="2dp"
-    android:layout_marginBottom="8dp">
+    app:cardElevation="@dimen/album_content_cell_card_view_elevation"
+    app:cardCornerRadius="@dimen/album_content_cell_card_view_corner_radius"
+    android:layout_marginEnd="@dimen/album_content_cell_end_margin"
+    android:layout_marginStart="@dimen/album_content_cell_start_margin"
+    android:layout_marginTop="@dimen/album_content_cell_top_margin"
+    android:layout_marginBottom="@dimen/album_content_cell_bottom_margin">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -17,24 +17,24 @@
 
         <ImageView
             android:id="@+id/album_content_thumbnail_iv"
-            android:layout_width="54dp"
-            android:layout_height="54dp"
+            android:layout_width="@dimen/album_content_cell_width"
+            android:layout_height="@dimen/album_content_cell_height"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginTop="@dimen/album_content_cell_thumbnail_iv_top_margin"
+            android:layout_marginBottom="@dimen/album_content_cell_thumbnail_iv_bottom_margin"
+            android:layout_marginStart="@dimen/album_content_cell_thumbnail_iv_start_margin"
             android:contentDescription="@string/album_content_cell_thumbnail_description"
             tools:src="@drawable/ic_launcher_background" />
 
         <TextView
             android:id="@+id/album_content_title_tv"
-            android:layout_width="280dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="@dimen/album_content_cell_title_start_margin"
+            android:layout_marginTop="@dimen/album_content_cell_title_top_margin"
             android:textIsSelectable="false"
-            android:textSize="16sp"
+            android:textSize="@dimen/album_content_cell_title_textSize"
             android:textStyle="bold"
-            tools:text="reprehenderit est deserunt velit ipsam"/>
+            tools:text="@string/album_content_tools_title"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.cardview.widget.CardView>

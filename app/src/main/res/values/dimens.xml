@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Album detail activity  cover image view dimensions-->
+    <dimen name="album_detail_cover_width">250dp</dimen>
+    <dimen name="album_detail_cover_height">250dp</dimen>
+
+    <!-- Album detail activity title dimensions-->
+    <dimen name="album_detail_title_text_size">16sp</dimen>
+    <dimen name="album_detail_title_top_margin">8dp</dimen>
+    <dimen name="album_detail_title_start_margin">10dp</dimen>
+    <dimen name="album_detail_title_end_margin">10dp</dimen>
+
+    <!-- Album content cell dimensions-->
+    <dimen name="album_content_cell_card_view_elevation">5dp</dimen>
+    <dimen name="album_content_cell_card_view_corner_radius">12dp</dimen>
+    <dimen name="album_content_cell_end_margin">8dp</dimen>
+    <dimen name="album_content_cell_start_margin">8dp</dimen>
+    <dimen name="album_content_cell_top_margin">2dp</dimen>
+    <dimen name="album_content_cell_bottom_margin">8dp</dimen>
+    <dimen name="album_content_cell_width">54dp</dimen>
+    <dimen name="album_content_cell_height">54dp</dimen>
+    <dimen name="album_content_cell_thumbnail_iv_top_margin">16dp</dimen>
+    <dimen name="album_content_cell_thumbnail_iv_bottom_margin">16dp</dimen>
+    <dimen name="album_content_cell_thumbnail_iv_start_margin">10dp</dimen>
+    <dimen name="album_content_cell_title_start_margin">12dp</dimen>
+    <dimen name="album_content_cell_title_top_margin">16dp</dimen>
+    <dimen name="album_content_cell_title_textSize">16sp</dimen>
+
+    <!-- Album list cell dimensions-->
+    <dimen name="album_list_cell_width">120dp</dimen>
+    <dimen name="album_list_cell_height">120dp</dimen>
+    <dimen name="album_list_cell_card_elevation">5dp</dimen>
+    <dimen name="album_list_cell_card_corner_radius">12dp</dimen>
+    <dimen name="album_list_cell_end_margin">8dp</dimen>
+    <dimen name="album_list_cell_start_margin">8dp</dimen>
+    <dimen name="album_list_cell_top_margin">8dp</dimen>
+    <dimen name="album_list_cell_bottom_margin">8dp</dimen>
+    <dimen name="album_list_cell_position_tv_text_size">30sp</dimen>
+
+</resources>
