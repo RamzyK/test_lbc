@@ -16,4 +16,33 @@
             android:layout_height="match_parent" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/empty_list_linear_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/album_list_empty_icon_width"
+            android:layout_height="@dimen/album_list_empty_icon_height"
+            android:layout_gravity="center"
+            android:src="@drawable/empty_box"
+            android:contentDescription="@string/album_empty_list_iv"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:layout_marginStart="@dimen/empty_list_tv_start_margin"
+            android:layout_marginEnd="@dimen/empty_list_tv_end_margin"
+            android:layout_marginTop="@dimen/empty_list_tv_top_margin"
+            android:textSize="@dimen/empty_list_tv_text_size"
+            android:textStyle="bold"
+            android:text="@string/empty_list_message"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
 </FrameLayout>

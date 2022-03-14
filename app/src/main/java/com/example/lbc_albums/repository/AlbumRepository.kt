@@ -26,29 +26,33 @@ class AlbumRepository(
     val stillLoading: PublishSubject<Boolean> = PublishSubject.create()
 
 
-    fun getAllAlbums() {
-        val call: Call<List<AlbumDto>> = albumService.getAllAlbums()
-        call.enqueue(object : Callback<List<AlbumDto>> {
-            override fun onResponse(
-                call: Call<List<AlbumDto>>,
-                response: Response<List<AlbumDto>>
-            ) {
-                response.body()?.let { albumsDto ->
-                    val mappedData = albumMapper.mapDtoToModel(albumsDto)
-                    if (albumsLiveData.value?.size != mappedData.size) {
-                        shouldUpdateDbData(mappedData)
+    fun getAllAlbums(shouldCallApi: Boolean) {
+        if (shouldCallApi) {
+            val call: Call<List<AlbumDto>> = albumService.getAllAlbums()
+            call.enqueue(object : Callback<List<AlbumDto>> {
+                override fun onResponse(
+                    call: Call<List<AlbumDto>>,
+                    response: Response<List<AlbumDto>>
+                ) {
+                    response.body()?.let { albumsDto ->
+                        val mappedData = albumMapper.mapDtoToModel(albumsDto)
+                        if (albumsLiveData.value?.size != mappedData.size) {
+                            shouldUpdateDbData(mappedData)
+                        }
+                        albumsLiveData.value = mappedData
+                        stillLoading.onNext(false)
                     }
-                    albumsLiveData.value = mappedData
+                }
+
+                override fun onFailure(call: Call<List<AlbumDto>>, t: Throwable) {
+                    // Handle errors
+                    fetchLocalDb()
                     stillLoading.onNext(false)
                 }
-            }
-
-            override fun onFailure(call: Call<List<AlbumDto>>, t: Throwable) {
-                // Handle errors
-                fetchLocalDb()
-                stillLoading.onNext(false)
-            }
-        })
+            })
+        } else {
+            fetchLocalDb()
+        }
     }
 
     private fun shouldUpdateDbData(mappedData: List<Albums>) {
@@ -63,6 +67,8 @@ class AlbumRepository(
             if (savedAlbums.isNotEmpty()) {
                 val mappedData = albumMapper.mapDaoToModel(savedAlbums)
                 albumsLiveData.postValue(mappedData)
+            } else {
+                albumsLiveData.postValue(emptyList())
             }
             stillLoading.onNext(false)
         }
