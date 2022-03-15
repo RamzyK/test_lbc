@@ -19,26 +19,26 @@ class AlbumsMapper : Mapper<List<AlbumDto>, List<Albums>> {
         var albumContentList: MutableList<Album> = mutableListOf()
         var albumId = this.first().albumId
         for (albumDto in this) {
-            if(albumDto.albumId != albumId){
-                val newAlbum = Albums(albumId, albumContentList)
-                albums.add( newAlbum)
+            if (albumDto.albumId != albumId) {
+                val newAlbum = Albums(albumId!!, albumContentList)
+                albums.add(newAlbum)
                 albumId = albumDto.albumId
                 albumContentList = mutableListOf()
             }
-            if(albumDto.albumId == albumId){
+            if (albumDto.albumId == albumId) {
                 val albumInfo = AlbumInfo(
-                    albumDto.title,
-                    albumDto.url,
-                    albumDto.thumbnailUrl,
+                    albumDto.title!!,
+                    albumDto.url!!,
+                    albumDto.thumbnailUrl!!,
                 )
                 albumContentList.add(
                     Album(
-                        albumDto.id,
+                        albumDto.id!!,
                         albumInfo
                     )
                 )
-                if(albumDto.id == this.last().id) {
-                    val newAlbum = Albums(albumId, albumContentList)
+                if (albumDto.id == this.last().id) {
+                    val newAlbum = Albums(albumId!!, albumContentList)
                     albums.add(newAlbum)
                 }
             }
@@ -55,14 +55,18 @@ class AlbumsMapper : Mapper<List<AlbumDto>, List<Albums>> {
     override fun mapDaoToModel(input: List<AlbumEntity>): List<Albums> {
         val inputMappedToDtos = input.map {
             AlbumDto(
-               it.albumId,
-               it.id,
-               it.title,
-               it.url,
-               it.thumbnailUrl
+                it.albumId,
+                it.id,
+                it.title,
+                it.url,
+                it.thumbnailUrl
             )
         }
         return mapDtoToModel(inputMappedToDtos)
+    }
+
+    fun isAlbumJsonDataValid(albumData: AlbumDto): Boolean {
+        return albumData.albumId != null && albumData.id != null && !albumData.title.isNullOrBlank() && !albumData.url.isNullOrBlank() && !albumData.thumbnailUrl.isNullOrBlank()
     }
 }
 

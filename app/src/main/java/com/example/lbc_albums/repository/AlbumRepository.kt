@@ -34,7 +34,9 @@ class AlbumRepository(
                     call: Call<List<AlbumDto>>,
                     response: Response<List<AlbumDto>>
                 ) {
-                    response.body()?.let { albumsDto ->
+                    response.body()?.filter {
+                        albumMapper.isAlbumJsonDataValid(it)
+                    }?.let { albumsDto ->
                         val mappedData = albumMapper.mapDtoToModel(albumsDto)
                         if (albumsLiveData.value?.size != mappedData.size) {
                             shouldUpdateDbData(mappedData)
@@ -55,13 +57,13 @@ class AlbumRepository(
         }
     }
 
-    private fun shouldUpdateDbData(mappedData: List<Albums>) {
+    private fun updateDbData(mappedData: List<Albums>) {
         clearAlbumDb()
         insertDataInLocalDb(mappedData)
     }
 
 
-    private fun fetchLocalDb(){
+    private fun fetchLocalDb() {
         GlobalScope.launch(Dispatchers.IO) {
             val savedAlbums = albumDb.albumsDao().getAll()
             if (savedAlbums.isNotEmpty()) {
@@ -75,7 +77,7 @@ class AlbumRepository(
     }
 
 
-    private fun insertDataInLocalDb(albums: List<Albums>){
+    private fun insertDataInLocalDb(albums: List<Albums>) {
         val albumsEntities: ArrayList<AlbumEntity> = arrayListOf()
         albums.map {
             Pair(it.id, it.albumContent)
@@ -101,7 +103,7 @@ class AlbumRepository(
         }
     }
 
-    private fun clearAlbumDb(){
+    private fun clearAlbumDb() {
         GlobalScope.launch(Dispatchers.IO) {
             albumDb.albumsDao().flushDb()
         }

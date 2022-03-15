@@ -5,13 +5,13 @@ import com.google.gson.annotations.SerializedName
 
 class AlbumDto(
     @field:SerializedName("albumId")
-    var albumId: Int,
+    var albumId: Int?,
     @field:SerializedName("id")
-    var id: Int,
+    var id: Int?,
     @field:SerializedName("title")
-    var title: String,
+    var title: String?,
     @field:SerializedName("url")
-    var url: String,
+    var url: String?,
     @field:SerializedName("thumbnailUrl")
-    var thumbnailUrl: String
+    var thumbnailUrl: String?
 )
