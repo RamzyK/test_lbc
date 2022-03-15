@@ -38,9 +38,8 @@ class AlbumRepository(
                         albumMapper.isAlbumJsonDataValid(it)
                     }?.let { albumsDto ->
                         val mappedData = albumMapper.mapDtoToModel(albumsDto)
-                        if (albumsLiveData.value?.size != mappedData.size) {
-                            shouldUpdateDbData(mappedData)
-                        }
+                        updateDbData(mappedData)
+
                         albumsLiveData.value = mappedData
                         stillLoading.onNext(false)
                     }
