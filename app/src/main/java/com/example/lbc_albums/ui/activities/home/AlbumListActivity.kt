@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.lbc_albums.R
 import com.example.lbc_albums.databinding.AlbumListActivityBinding
 import com.example.lbc_albums.helpers.DevRule.ALBUM_CONTENT_POSITION_KEY
 import com.example.lbc_albums.helpers.DevRule.ALBUM_GRID_COLONES
@@ -89,6 +90,7 @@ class AlbumListActivity : AppCompatActivity(), RecyclerViewClickListener {
      * Function to set up the views of the activity
      */
     private fun setUpViews() {
+        this.title = getString(R.string.album_list_activity_title)
         val layoutManager =
             GridLayoutManager(
                 this,

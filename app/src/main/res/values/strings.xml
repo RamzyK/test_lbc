@@ -10,4 +10,5 @@
     <string name="album_list_cell_album_position_tv_tools_text">1</string>
     <string name="album_empty_list_iv">Empty list icon</string>
     <string name="empty_list_message">Aucun album n\'a été trouvé, raffraichissez la page ou verifiez votre connexion réseau</string>
+    <string name="album_list_activity_title">Groupes d\'albums</string>
 </resources>
