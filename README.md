@@ -8,6 +8,8 @@ L’architecture du projet est un Model - View - ViewModel (MVVM) afin de sépar
 
 On utilise [Glide](https://github.com/bumptech/glide) dans le projet pour gérer l’affichage des images depuis une url ainsi que la mise en cache des url pour ne pas systématiquement faire des appels réseau à chaque fois qu’on veut afficher une image
 
+L'application prend gère le swipe to refresh pour relancer un appel afin de récupérer les informations si on lance l'application et que la connectivité est désctivée.
+
 
 # Les écrans
 
@@ -16,6 +18,11 @@ L’application se divise en 3 écrans principaux:
 - AlbumListActivity: Écran qui affiche la liste des albums, en les regroupant par albumId. Le clique sur un album affiche tous les album ayant le même albumId dans l’écran AlbumContentActivity
 
 ![Capture d’écran 2022-03-17 à 11 26 13](https://user-images.githubusercontent.com/38216742/158796025-6a56df82-4a3e-48a1-a414-cc71ddf6c39d.png)
+
+Si au premier lancement de l'app, aucune connexion à internet n'est possible, on affiche un écran vide avec une image et une explication, l'utilisateur devra réactiver sa connectiviter et faire un swipe to refresh pour relancer un appel et récupérer de nouvelles données.
+
+<img width="431" alt="Capture d’écran 2022-03-17 à 12 56 38" src="https://user-images.githubusercontent.com/38216742/158803768-92bf2065-5627-4627-9529-9242f65b3203.png">
+
 
 - AlbumContentActivity: Écran affichant la liste des albums ayant le même albumId. Chaque cellule affiche le titre de l’album ainsi que l’image de ce dernier. Le clique sur un album affiche son détail
 
