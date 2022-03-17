@@ -11,7 +11,6 @@ import com.example.lbc_albums.helpers.DevRule.ALBUM_COVER_URL_KEY
 import com.example.lbc_albums.helpers.DevRule.ALBUM_ID_KEY
 import com.example.lbc_albums.helpers.DevRule.ALBUM_TITLE_KEY
 import com.example.lbc_albums.helpers.RecyclerViewClickListener
-import com.example.lbc_albums.model.Albums
 import com.example.lbc_albums.ui.activities.album_detail.AlbumDetailActivity
 import com.example.lbc_albums.ui.viewmodel.AlbumViewModel
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -26,15 +25,14 @@ class AlbumContentActivity : AppCompatActivity(), RecyclerViewClickListener {
     private lateinit var binding: AlbumContentActivityBinding
 
     private lateinit var albumContentAdapter: AlbumContentAdapter
-    private lateinit var albumContentList : Albums
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = AlbumContentActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setUpViews()
-        fillViews()
+        this.setUpViews()
+        this.fillViews()
     }
 
     private fun setUpViews() {
@@ -52,21 +50,22 @@ class AlbumContentActivity : AppCompatActivity(), RecyclerViewClickListener {
     /**
      * Get position the
      */
-    private fun getDataFromIntent(): Int{
-        val albumContentId = intent.getIntExtra(ALBUM_CONTENT_POSITION_KEY, 0)
-        this.title = this.getString(
-            R.string.album_content_activity_title,
-            albumContentId + 1
-        )
-        return albumContentId
+    private fun getDataFromIntent(): Int {
+        return intent.getIntExtra(ALBUM_CONTENT_POSITION_KEY, 0)
     }
 
     private fun fillViews() {
-        getAlbumContentList()
+        this.albumViewModel.updateAlbumGroup(getDataFromIntent())
+        this.title = this.getString(
+            R.string.album_content_activity_title,
+            this.albumViewModel.getAlbumGroup() + 1
+        )
+        val albumContentList = albumViewModel.getCurrentAlbumGroupContent()
         albumContentAdapter.submitList(albumContentList.albumContent)
     }
 
     override fun onClickListener(position: Int) {
+        val albumContentList = albumViewModel.getCurrentAlbumGroupContent()
         val albumContent = albumContentList.albumContent[position]
         Intent(
             this,
@@ -86,11 +85,5 @@ class AlbumContentActivity : AppCompatActivity(), RecyclerViewClickListener {
             )
             startActivity(it)
         }
-    }
-
-    private fun getAlbumContentList() {
-        val albumContentPosition = getDataFromIntent()
-        val albumsList = albumViewModel.albumsLiveData.value!!
-        albumContentList = albumsList[albumContentPosition]
     }
 }

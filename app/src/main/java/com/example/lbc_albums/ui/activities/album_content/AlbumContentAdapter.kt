@@ -14,14 +14,14 @@ import com.example.lbc_albums.databinding.AlbumContentListCellBinding
 import com.example.lbc_albums.helpers.BaseAdapter
 import com.example.lbc_albums.helpers.RecyclerViewClickListener
 import com.example.lbc_albums.helpers.setFadeAnimation
-import com.example.lbc_albums.model.Album
+import com.example.lbc_albums.model.AlbumContent
 
 
 /**
  * Adapter to create and manage the list of albums list
  */
 class AlbumContentAdapter(private val albumClickListener: RecyclerViewClickListener) :
-    BaseAdapter<Album, AlbumContentAdapter.AlbumContentViewHolder>() {
+    BaseAdapter<AlbumContent, AlbumContentAdapter.AlbumContentViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumContentViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -42,7 +42,7 @@ class AlbumContentAdapter(private val albumClickListener: RecyclerViewClickListe
 
     class AlbumContentViewHolder(private val binding: AlbumContentListCellBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Album) {
+        fun bind(item: AlbumContent) {
             binding.albumContentTitleTv.text = item.albumInformation.title
 
             val glideUrl = GlideUrl(

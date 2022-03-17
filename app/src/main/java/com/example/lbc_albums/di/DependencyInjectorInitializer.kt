@@ -9,6 +9,9 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.startKoin
 
+/**
+ * DI initializer called to instantiate modules
+ */
 @DelicateCoroutinesApi
 class DependencyInjectorInitializer: Initializer<Unit> {
     override fun create(context: Context) {

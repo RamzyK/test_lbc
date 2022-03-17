@@ -31,8 +31,19 @@ internal object DevRule {
      */
     const val ALBUM_CONTENT_POSITION_KEY = "ALBUM_CONTENT_POSITION_KEY"
 
+    /**
+     * Constant string to pass data in the intent between AlbumContentActivity & AlbumDetailActivity
+     */
     const val ALBUM_COVER_URL_KEY = "ALBUM_COVER_URL_KEY"
+
+    /**
+     * Constant string to pass data in the intent between AlbumContentActivity & AlbumDetailActivity
+     */
     const val ALBUM_TITLE_KEY = "ALBUM_TITLE_KEY"
+
+    /**
+     * Constant string to pass data in the intent between AlbumContentActivity & AlbumDetailActivity
+     */
     const val ALBUM_ID_KEY = "ALBUM_ID_KEY"
 }
 
@@ -43,6 +54,9 @@ internal object DevRule {
 abstract class BaseAdapter<T: Any, VH : RecyclerView.ViewHolder>: ListAdapter<T, VH>(BaseItemCallback<T>())
 
 
+/**
+ * Generic diff util item callback used in both AlbumListActivity and AlbumContentActivity recyclerviews
+ */
 @SuppressLint("DiffUtilEquals")
 class BaseItemCallback<T : Any> : DiffUtil.ItemCallback<T>() {
     override fun areItemsTheSame(oldItem: T, newItem: T) = oldItem.toString() == newItem.toString()

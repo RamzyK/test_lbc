@@ -74,12 +74,12 @@ class AlbumListActivity : AppCompatActivity(), RecyclerViewClickListener {
                 object : NetworkCallback() {
                     override fun onAvailable(network: Network) {
                         super.onAvailable(network)
-                        albumViewModel.isUserOnline = true
+                        albumViewModel.updateOnlineStatus(true)
                     }
 
                     override fun onLost(network: Network) {
                         super.onLost(network)
-                        albumViewModel.isUserOnline = false
+                        albumViewModel.updateOnlineStatus(false)
                     }
                 }
             )

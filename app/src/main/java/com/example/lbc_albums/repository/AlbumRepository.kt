@@ -16,16 +16,34 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+/**
+ * Class to handle the networking of the app. Here we do http calls
+ * and db management
+ *
+ * @param albumService: Instance of the retrofit interface to get data
+ * @param albumMapper: Instance of album mapper class to mapp data from a type to another
+ * @param albumDb: Instance of the local room db to save data
+ */
 @DelicateCoroutinesApi
 class AlbumRepository(
     private val albumService: AlbumService,
     private val albumMapper: AlbumsMapper,
     private val albumDb: LocalAlbumsDb
 ) {
+    /**
+     * List of Albums model observed by the VM in order to update the view
+     */
     val albumsLiveData: MutableLiveData<List<Albums>> = MutableLiveData<List<Albums>>()
+
+    /**
+     * Track the status of the http call
+     */
     val stillLoading: PublishSubject<Boolean> = PublishSubject.create()
 
 
+    /**
+     * Retofit http call to get data from endpoint
+     */
     fun getAllAlbums(shouldCallApi: Boolean) {
         if (shouldCallApi) {
             val call: Call<List<AlbumDto>> = albumService.getAllAlbums()
@@ -56,12 +74,21 @@ class AlbumRepository(
         }
     }
 
+    /**
+     * Funtion called when db needs to be update e.g when new data are getting in from the api,
+     * data needs to be synced locally to always provide fresh data
+     *
+     * @param mappedData: List of mapped data that will we insert in the local db
+     */
     private fun updateDbData(mappedData: List<Albums>) {
         clearAlbumDb()
         insertDataInLocalDb(mappedData)
     }
 
 
+    /**
+     * Function to get data locally saved in db
+     */
     private fun fetchLocalDb() {
         GlobalScope.launch(Dispatchers.IO) {
             val savedAlbums = albumDb.albumsDao().getAll()
@@ -76,6 +103,11 @@ class AlbumRepository(
     }
 
 
+    /**
+     * Function called to insert fresh data in local db
+     *
+     * @param albums: List of mapped data that will we insert in the local db
+     */
     private fun insertDataInLocalDb(albums: List<Albums>) {
         val albumsEntities: ArrayList<AlbumEntity> = arrayListOf()
         albums.map {
@@ -102,6 +134,9 @@ class AlbumRepository(
         }
     }
 
+    /**
+     * Function called to clear local db in order to insert fresh data
+     */
     private fun clearAlbumDb() {
         GlobalScope.launch(Dispatchers.IO) {
             albumDb.albumsDao().flushDb()

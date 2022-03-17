@@ -41,6 +41,9 @@ private fun createOkHttpClient(): OkHttpClient {
 }
 
 
+/**
+ * Retrofit configuration
+ */
 fun createRetrofit(okHttpClient: OkHttpClient, baseURL: String): Retrofit {
 
     return Retrofit.Builder()
@@ -50,6 +53,9 @@ fun createRetrofit(okHttpClient: OkHttpClient, baseURL: String): Retrofit {
         .build()
 }
 
+/**
+ * Create WS generically
+ */
 inline fun <reified T> createWebService(retrofit: Retrofit): T {
     return retrofit.create(T::class.java)
 }

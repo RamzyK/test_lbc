@@ -1,11 +1,14 @@
 package com.example.lbc_albums.network.mappers
 
 import com.example.lbc_albums.db.entities.AlbumEntity
-import com.example.lbc_albums.model.Album
+import com.example.lbc_albums.model.AlbumContent
 import com.example.lbc_albums.model.AlbumInfo
 import com.example.lbc_albums.model.Albums
 import com.example.lbc_albums.network.dto.AlbumDto
 
+/**
+ * Class to help map albums data in the app
+ */
 class AlbumsMapper : Mapper<List<AlbumDto>, List<Albums>> {
 
     /**
@@ -16,7 +19,7 @@ class AlbumsMapper : Mapper<List<AlbumDto>, List<Albums>> {
      */
     override fun mapDtoToModel(input: List<AlbumDto>): List<Albums> = with(input) {
         val albums: MutableList<Albums> = mutableListOf()
-        var albumContentList: MutableList<Album> = mutableListOf()
+        var albumContentList: MutableList<AlbumContent> = mutableListOf()
         var albumId = this.first().albumId
         for (albumDto in this) {
             if (albumDto.albumId != albumId) {
@@ -32,7 +35,7 @@ class AlbumsMapper : Mapper<List<AlbumDto>, List<Albums>> {
                     albumDto.thumbnailUrl!!,
                 )
                 albumContentList.add(
-                    Album(
+                    AlbumContent(
                         albumDto.id!!,
                         albumInfo
                     )
@@ -65,6 +68,11 @@ class AlbumsMapper : Mapper<List<AlbumDto>, List<Albums>> {
         return mapDtoToModel(inputMappedToDtos)
     }
 
+    /**
+     * Function to tell if an album's dto is valid and has been correclty mapped after receiving the album json data
+     *
+     * @param albumData: Album data mapped in a DTO object
+     */
     fun isAlbumJsonDataValid(albumData: AlbumDto): Boolean {
         return albumData.albumId != null && albumData.id != null && !albumData.title.isNullOrBlank() && !albumData.url.isNullOrBlank() && !albumData.thumbnailUrl.isNullOrBlank()
     }

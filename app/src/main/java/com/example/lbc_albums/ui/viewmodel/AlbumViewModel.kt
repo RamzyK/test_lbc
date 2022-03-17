@@ -7,6 +7,10 @@ import com.example.lbc_albums.model.Albums
 import io.reactivex.rxjava3.subjects.PublishSubject
 import kotlinx.coroutines.DelicateCoroutinesApi
 
+/**
+ * View model that saves the data of the view in order to handle view configuration changes
+ * (Rotation, theme update, etc.)
+ */
 @DelicateCoroutinesApi
 class AlbumViewModel(private val albumRepository: AlbumRepository): ViewModel() {
 
@@ -24,7 +28,12 @@ class AlbumViewModel(private val albumRepository: AlbumRepository): ViewModel() 
      * Keep track of the user's connectivity state, updated when user switches off his connectivity
      * By default at the first app usage, we consider that the user is connected
      */
-    var isUserOnline = true
+    private var isUserOnline = true
+
+    /**
+     * Current selected album group
+     */
+    private var currentSelectedAlbumGroup : Int = 0
 
 
     init {
@@ -34,7 +43,25 @@ class AlbumViewModel(private val albumRepository: AlbumRepository): ViewModel() 
     @DelicateCoroutinesApi
     fun getAllAlbums() {
         albumRepository.getAllAlbums(isUserOnline)
+    }
 
+    /**
+     * Function called in album content view to get the content of a group of albums
+     */
+    fun getCurrentAlbumGroupContent(): Albums {
+        return albumsLiveData.value!!.get(currentSelectedAlbumGroup)
+    }
+
+    fun updateAlbumGroup(albumGroup: Int) {
+        this.currentSelectedAlbumGroup = albumGroup
+    }
+
+    fun getAlbumGroup(): Int {
+        return this.currentSelectedAlbumGroup
+    }
+
+    fun updateOnlineStatus(isOnline: Boolean) {
+        this.isUserOnline = isOnline
     }
 
 }
