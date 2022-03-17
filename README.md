@@ -8,7 +8,7 @@ L’architecture du projet est un Model - View - ViewModel (MVVM) afin de sépar
 
 On utilise [Glide](https://github.com/bumptech/glide) dans le projet pour gérer l’affichage des images depuis une url ainsi que la mise en cache des url pour ne pas systématiquement faire des appels réseau à chaque fois qu’on veut afficher une image
 
-L'application prend gère le swipe to refresh pour relancer un appel afin de récupérer les informations si on lance l'application et que la connectivité est désctivée.
+L'application gère le swipe to refresh pour relancer un appel afin de récupérer les informations si on lance l'application et que la connectivité est désctivée.
 
 
 # Les écrans
