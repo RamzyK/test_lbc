@@ -47,6 +47,9 @@ class AlbumViewModel(private val albumRepository: AlbumRepository): ViewModel() 
 
     /**
      * Function called in album content view to get the content of a group of albums
+     *
+     * Here we force the optional because we are sure that there is data in the albums list
+     * because is there was not, we won't be able to click on a cell to show it's content
      */
     fun getCurrentAlbumGroupContent(): Albums {
         return albumsLiveData.value!!.get(currentSelectedAlbumGroup)
